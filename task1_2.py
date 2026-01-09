@@ -4,9 +4,11 @@ try:
     min = int(input("Введіть число >=1"))
     max = int(input("Введіть число <=1000"))
     quantity = int(input("Введіть кількість чисел"))
+except ValueError:
+    print("Помилка даних")
 
-
-    def get_numbers_ticket(min, max, quantity):
+def get_numbers_ticket(min, max, quantity):
+    try:  
         list_number = set()
 
         if min >= 1 and max <=1000 and quantity <= max-min+1:
@@ -15,9 +17,11 @@ try:
         else:
             return []
         result = list(list_number)
-        return sorted(result)
-
-    print(get_numbers_ticket(min, max, quantity))
-
-except ValueError:
+    except ValueError:
         print("Помилка даних")
+
+    return sorted(result)
+        
+print(get_numbers_ticket(min, max, quantity))
+
+
